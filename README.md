@@ -18,6 +18,7 @@ __You don't know Akinator ?__ Go to http://en.akinator.com/
 - Artificial Learning
 - Knowledge base
 
+The IA can learn new character from South-Park  
 The knowledge base improves as the games are played
 
 ## Installation
@@ -32,8 +33,6 @@ The knowledge base improves as the games are played
 2.  Go to new game
 3.  Think about a character from South-Park
 4.  The IA will ask you some questions, you just have to answer it :)
-
--  The IA can learn new character from South-Park. 
 
 ## Contributing
 1. Fork it!
