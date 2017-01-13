@@ -26,10 +26,6 @@ class App extends Component {
 }
 
 export default createContainer(() => {
-    Meteor.subscribe('Characters');
-    Meteor.subscribe('CharactersResponses');
-    Meteor.subscribe('Questions');
-    Meteor.subscribe('Games');
     return {
         character: Characters.findOne(),
     };

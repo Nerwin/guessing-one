@@ -5,9 +5,13 @@ import Navbar from '/client/components/navbar';
 
 export const MainLayout = ({ container }) => (
     <div>
-        <Navbar />
-        <div className="container-fluid card">
-            {container()}
+        <div className="container-fluid">
+            <Navbar />
+            <div className="row">
+                <div className="col-sm-12">
+                    {container()}
+                </div>
+            </div>
         </div>
     </div>
 );

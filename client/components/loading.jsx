@@ -1,5 +1,4 @@
-import React, { Component, PropTypes } from 'react';
-import { Dom } from 'react-dom';
+import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 
 export default class Loading extends Component {
@@ -10,7 +9,7 @@ export default class Loading extends Component {
 
     render() {
         return (
-            <div className="text-center">
+            <div className="card text-center">
                 <div className="loader"></div>
             </div>
         )

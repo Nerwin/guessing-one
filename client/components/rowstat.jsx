@@ -24,7 +24,7 @@ class RowStat extends Component {
 
 export default createContainer(() => {
     return {
-        stat: this.props.stats
+        stat: this.props.stat
     };
 }, RowStat);
 

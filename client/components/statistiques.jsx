@@ -17,22 +17,14 @@ class Statistiques extends Component {
         Meteor.call('sendResponse', { idResponse: event.currentTarget.id });
     }
 
-    renderRowStat() {
-        let stats = Session.get("stats");
-        console.log("stats : ", stats);
-
-        return <RowStat key={stats._id} stats={stats} />
-    }
-
     render() {
-
-        if (typeof Session.get("stats") != "undefined") {
+        if (typeof this.props.stats == "undefined") {
             return (<Loading />);
         } else {
             return (
-                <div>
-                    <ul>{this.renderRowStat()}</ul>
-                </div>
+                _.each(this.props.stats, function (stat, index) {
+                    return <li><RowStat key={stat._id} stat={game} /></li>;
+                })
             )
         }
     }
@@ -41,14 +33,16 @@ class Statistiques extends Component {
 export default createContainer(() => {
     Meteor.subscribe('Games');
 
+    Meteor.call('findStatistiques', function (err, result) {
+        if (err)
+            console.error("findStatistiques : ", err);
+
+        console.log("stats result : ", result);
+        Session.set("stats", result);
+    });
+
     return {
-        character: Meteor.call('findStatistiques', function (err, result) {
-            if (err) {
-                console.log(err);
-            }
-            console.log("stats result : ", result);
-            Session.set("stats", result);
-        }),
+        stats: Session.get("stats"),
     };
 }, Statistiques);
 

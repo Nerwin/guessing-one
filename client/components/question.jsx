@@ -7,7 +7,7 @@ export default class Question extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {roundNumber: 1};
+        this.state = { roundNumber: 1 };
     }
 
     imgError(event) {
@@ -15,15 +15,17 @@ export default class Question extends Component {
     }
 
     render() {
+        console.log("Question render");
         if (typeof this.props.question != "undefined") {
-            console.log("Question render : " + this.props.question);
+
+            let question = this.props.question
 
             let levelImg = (typeof this.props.level != 'undefined') ? "/images/" + this.props.level.img : "/images/defaultLevel.png";
             return (
                 <div>
                     <p className="roundNumber-card text-left">Question {this.state.roundNumber}</p>
                     <img src={levelImg} className="img-card" onError={this.imgError}></img>
-                    <p className="text-card text-center">{this.props.question.libelle}</p>
+                    <p className="text-card text-center">{question.libelle}</p>
                 </div>
             )
         } else {
@@ -34,10 +36,10 @@ export default class Question extends Component {
     }
 }
 
-// Question.propTypes = {
-//     // 'level': React.PropTypes.object,
-//     'question': React.PropTypes.string,
-// };
+Question.propTypes = {
+    'question': React.PropTypes.any.isRequired,
+    'question': React.PropTypes.object,
+};
 
 
 

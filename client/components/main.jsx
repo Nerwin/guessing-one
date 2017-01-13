@@ -12,7 +12,7 @@ class Main extends Component {
 
     render() {
         return (
-            <div>
+            <div className="card">
                 <p>Ready to start a new game ?</p>
                 <div className="group-button">
                     <a className="btn btn-primary btn-block" href="newGame">New Game</a>

@@ -37,8 +37,5 @@ export default class Character extends Component {
 }
 
 Character.propTypes = {
-  'character': React.PropTypes.string,
+  'character': React.PropTypes.object,
 };
-
-
-
