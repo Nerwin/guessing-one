@@ -9,12 +9,17 @@ class GameHistory extends Component {
         super(props);
     }
 
+    handleGoBack(event, instance) {
+        event.preventDefault();
+        // Handle click for sign in or sign up
+    }
+
 
     renderGame() {
         let games = this.props.games;
 
-        return games.map(function(game, index) {
-            return <Game key={game._id} game={game} number={index}/>
+        return games.map(function (game, index) {
+            return <Game key={game._id} game={game} number={index} />
         });
     }
 
@@ -24,7 +29,17 @@ class GameHistory extends Component {
                 <div className="game-history">{this.renderGame()}</div>
             );
         } else {
-            return (<p>No history games</p>);
+            return (
+                <div className="card text-center">
+                    <p>No history games</p>
+                    <p>You should sign up for have your history game</p>
+                    <p>You already have an account ? Go sign in</p>
+                    <div className="group-button">
+                        <a className="btn btn-primary" href="/">Sign In</a>
+                        <a className="btn btn-primary" href="/">Sign Up</a>
+                    </div>
+                </div>
+            );
         }
     }
 }

@@ -23,12 +23,14 @@ export default class Game extends Component {
         $('.gameNum' + event.currentTarget.id).toggle();
     }
 
-    renderRound() {
+    renderRounds() {
         let rounds = this.props.game.rounds;
         let number = this.props.number;
 
+        console.log("rounds ", rounds);
+
         return rounds.map(function (round, index) {
-            return <Round key={round._id} round={round} gameNumber={number} roundNumber={index} />
+            return <Round key={round.response._id} round={round} gameNumber={number} roundNumber={index} />
         });
     }
 
@@ -45,8 +47,8 @@ export default class Game extends Component {
                             <td className="col-header">Total rounds</td>
                         </tr>
                         <tr>
-                            <td>{moment(this.props.game.createdAt).format('DD MM YYYY')}</td>
-                            <td>{this.props.game.chosenCharacter}</td>
+                            <td>{this.props.game.createdAt}</td>
+                            <td>{this.props.game.chosenCharacterName}</td>
                             <td>{this.props.game.founded == true ? 'Yes' : 'No'}</td>
                             <td><button className="btn btn-primary" type="button" id={this.props.number} onClick={this.handleClick}>{this.props.game.rounds.length}</button></td>
                         </tr>
@@ -56,7 +58,7 @@ export default class Game extends Component {
                             <td className="col-header">Given answer</td>
                             <td className="col-header">Wanted answer</td>
                         </tr>
-                        {this.renderRound()}
+                        {this.renderRounds()}
                     </tbody>
                 </table>
             )

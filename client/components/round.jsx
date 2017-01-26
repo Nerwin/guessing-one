@@ -9,17 +9,27 @@ export default class Round extends Component {
     }
     render() {
 
+        console.log("round ", this.props.round);
         if (typeof this.props.round != 'undefined' && !_.isEmpty(this.props.round)) {
-            console.log("this.props.gameNumber : " + this.props.gameNumber);
-            console.log("this.props.roundNumber : " + this.props.roundNumber);
-            return (
-                <tr className={"rounds gameNum" + this.props.gameNumber}>
-                    <td>{this.props.roundNumber}</td>
-                    <td>{this.props.round.question}</td>
-                    <td>{this.props.round.givenAnswer}</td>
-                    <td>{this.props.round.wantedAnswer}</td>
-                </tr>
-            )
+
+            if (this.props.round.response.type == 'suggestion') {
+                return (
+                    <tr className={"rounds gameNum" + this.props.gameNumber}>
+                        <td>{this.props.roundNumber + 1}</td>
+                        <td>Suggested character : <b>{this.props.round.response.name}</b></td>
+                        <td>{ResponsesDisplay[this.props.round.givenAnswer]}</td>
+                    </tr>
+                )
+            } else {
+                return (
+                    <tr className={"rounds gameNum" + this.props.gameNumber}>
+                        <td>{this.props.roundNumber + 1}</td>
+                        <td>{this.props.round.response.libelle}</td>
+                        <td>{ResponsesDisplay[this.props.round.givenAnswer]}</td>
+                        { /* <td>{this.props.round.wantedAnswer}</td> */}
+                    </tr>
+                )
+            }
         } else {
             return (<tr>No round found</tr>);
         }

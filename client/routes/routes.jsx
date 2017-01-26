@@ -19,9 +19,9 @@ FlowRouter.route("/", {
 
 FlowRouter.route("/newGame", {
     action() {
-        console.log("newGame");
-        Meteor.call('initNewGame');
-        Session.set("isNewGame", true);
+        Meteor.call('initNewGame', function (err, result) {
+            Session.set("returnedComponent", result);
+        });
         mount(MainLayout, {
             container: () => (<Card />)
         });
@@ -30,7 +30,6 @@ FlowRouter.route("/newGame", {
 
 FlowRouter.route("/lastGames", {
     action() {
-        console.log("lastGames");
         mount(MainLayout, {
             container: () => (<GameHistory />)
         });
@@ -39,7 +38,6 @@ FlowRouter.route("/lastGames", {
 
 FlowRouter.route("/statistiques", {
     action() {
-        console.log("statistiques");
         mount(MainLayout, {
             container: () => (<Statistiques />)
         });
