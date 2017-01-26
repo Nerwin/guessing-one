@@ -165,6 +165,8 @@ class Jarvis {
         let attributeWithBestGain = _.max(attributesList, function (attribute) { return attribute.gain; });
         let nextQuestion = _.find(questions, function (question) { return question.attribute == attributeWithBestGain.name; });
 
+        console.log("attributeWithBestGain ", attributeWithBestGain);
+        console.log("nextQuestion ", nextQuestion);
         return nextQuestion;
     };
 

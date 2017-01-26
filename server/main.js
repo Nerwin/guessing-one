@@ -67,7 +67,8 @@ function createQuestions() {
         { attribute: "CheveuxLong", libelle: "Votre personnage as t-il des cheveux longs ?" },
         { attribute: "EstHandicape", libelle: "Votre personnage est-il handicape physique ou mentale ?" },
         { attribute: "EstMechant", libelle: "Votre personnage est-il de nature méchante ?" },
-        { attribute: "PresentSaison1", libelle: "Votre personnage est-il présent dans la saison 1 ?" }];
+        { attribute: "PresentSaison1", libelle: "Votre personnage est-il présent dans la saison 1 ?" },
+        { attribute: "OrigineAmericaine", libelle: "Votre personnage est-il d'origine Américaine ?" }];
 
     _.each(questions, function (element, index) {
         Questions.insert(element);
