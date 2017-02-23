@@ -10,22 +10,22 @@ export default class Navbar extends Component {
     }
 
     render() {
+        $(".navi li").on("click", function () {
+            $("li.active").removeClass("active");
+            $(this).addClass("active");
+        });
+
         return (
-            <nav className="navbar navbar-default">
-                <div className="container">
-                    <div className="navbar-header"><a className="navbar-brand navbar-link" href="/">Akinator South-Park</a>
-                        <button className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span className="sr-only">Toggle navigation</span><span className="icon-bar"></span><span className="icon-bar"></span><span className="icon-bar"></span></button>
-                    </div>
-                    <div className="collapse navbar-collapse" id="navcol-1">
-                        <ul className="nav navbar-nav">
-                            <li role="presentation"><a href="newGame">New Game</a></li>
-                            <li role="presentation"><a href="lastGames">Last Games</a></li>
-                            <li role="presentation"><a href="statistiques">Statistiques</a></li>
-                        </ul>
-                        <button className="btn btn-primary navbar-btn navbar-right" type="button"><strong>SIGN UP</strong></button>
-                    </div>
-                </div>
-            </nav>
+            <div className="ui-navbar">
+                <ul className="navi">
+                    <li className="active"><a href="/" ><i className="fa fa-home"></i><span>Home</span></a></li>
+                    <li><a href="newGame" ><i className="fa fa-user"></i><span>New Game</span></a></li>
+                    <li><a href="lastGames" ><i className="fa fa-history"></i><span>History Games</span></a></li>
+                    <li><a href="statistiques" ><i className="fa fa-line-chart"></i><span>Statistiques</span></a></li>
+                    <li><a href="connection" ><i className="fa fa-download"></i><span>Connection</span></a></li>
+                </ul>
+                <div className="clearfix"></div>
+            </div>
         )
     }
 }

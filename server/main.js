@@ -7,8 +7,6 @@ Meteor.startup(() => {
 
 /* Create MOC of datas */
 function initDatas() {
-    console.log("init datas");
-
     if (Questions.find().count() < 1) {
         createQuestions();
     }

@@ -14,7 +14,6 @@ class GameHistory extends Component {
         // Handle click for sign in or sign up
     }
 
-
     renderGame() {
         let games = this.props.games;
 
@@ -26,7 +25,11 @@ class GameHistory extends Component {
     render() {
         if (typeof this.props.games != "undefined" && _.size(this.props.games) > 0) {
             return (
-                <div className="game-history">{this.renderGame()}</div>
+                <div className="ui-gameHistory">
+			        <div className="container">
+                        {this.renderGame()}
+                    </div>
+                </div>
             );
         } else {
             return (
@@ -35,8 +38,7 @@ class GameHistory extends Component {
                     <p>You should sign up for have your history game</p>
                     <p>You already have an account ? Go sign in</p>
                     <div className="group-button">
-                        <a className="btn btn-primary" href="/">Sign In</a>
-                        <a className="btn btn-primary" href="/">Sign Up</a>
+                        <a className="btn btn-primary" href="connection">Sign In</a>
                     </div>
                 </div>
             );
@@ -46,7 +48,7 @@ class GameHistory extends Component {
 
 export default createContainer(() => {
     Meteor.subscribe('Games');
-    let games = Games.find().fetch();
+    let games = Games.find({}, {sort: {createdAt: -1}}).fetch();
     return {
         games: games
     };

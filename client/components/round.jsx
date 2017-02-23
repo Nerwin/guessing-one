@@ -8,8 +8,6 @@ export default class Round extends Component {
         super(props);
     }
     render() {
-
-        console.log("round ", this.props.round);
         if (typeof this.props.round != 'undefined' && !_.isEmpty(this.props.round)) {
 
             if (this.props.round.response.type == 'suggestion') {

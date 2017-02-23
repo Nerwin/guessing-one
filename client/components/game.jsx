@@ -27,44 +27,45 @@ export default class Game extends Component {
         let rounds = this.props.game.rounds;
         let number = this.props.number;
 
-        console.log("rounds ", rounds);
-
         return rounds.map(function (round, index) {
             return <Round key={round.response._id} round={round} gameNumber={number} roundNumber={index} />
         });
     }
 
-    render() {
 
-        if (typeof this.props.game != 'undefined' && !_.isEmpty(this.props.game)) {
-            return (
-                <table className="well">
-                    <tbody>
-                        <tr>
-                            <td className="col-header">Game date</td>
-                            <td className="col-header">Chosen character</td>
-                            <td className="col-header">Guessed</td>
-                            <td className="col-header">Total rounds</td>
-                        </tr>
-                        <tr>
-                            <td>{this.props.game.createdAt}</td>
-                            <td>{this.props.game.chosenCharacterName}</td>
-                            <td>{this.props.game.founded == true ? 'Yes' : 'No'}</td>
-                            <td><button className="btn btn-primary" type="button" id={this.props.number} onClick={this.handleClick}>{this.props.game.rounds.length}</button></td>
-                        </tr>
-                        <tr className={"rounds gameNum" + this.props.number}>
-                            <td className="col-header">Round</td>
-                            <td className="col-header">Question</td>
-                            <td className="col-header">Given answer</td>
-                            <td className="col-header">Wanted answer</td>
-                        </tr>
-                        {this.renderRounds()}
-                    </tbody>
-                </table>
-            )
-        } else {
-            return (<p className="text-card">No previous game found</p>);
-        }
+    render() {
+        return (
+        <div className="ui-game">
+			<div className="panel-group" id="accordion">
+			  <div className="panel">	
+				 <div className="panel-heading">
+					<h4 className="panel-title">
+					  <a data-toggle="collapse" data-parent="#accordion" href={"#collapse"+(this.props.number + 1)}>
+						<i className="fa fa-angle-right" style={{margin:"15px"}}></i> {this.props.game.createdAt + " - " + this.props.game.chosenCharacterName + " - " + (this.props.game.founded == true ? 'Found' : 'Not found')}
+					  </a>
+					</h4>
+				 </div>
+				 <div id={"collapse"+(this.props.number + 1)} className="panel-collapse collapse out">
+					<div className="panel-body">
+						<div className="table-responsive">
+							<table className="table">
+								<tbody>
+                                    <tr className="rounds">
+                                        <td className="col-header">Round</td>
+                                        <td className="col-header">Question</td>
+                                        <td className="col-header">Given answer</td>
+                                        <td className="col-header">Wanted answer</td>
+                                    </tr>
+                                    {this.renderRounds()}
+                                </tbody>
+							</table>
+						</div>
+					</div>
+				 </div>
+			  </div>
+            </div>
+        </div>
+        );
     }
 };
 

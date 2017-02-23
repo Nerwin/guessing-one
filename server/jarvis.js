@@ -5,7 +5,6 @@ class Jarvis {
     };
 
     initNewGame() {
-        console.log("entry initNewGame");
         questions = Questions.find().fetch();
         characters = Characters.find().fetch();
         charactersResponses = CharactersResponses.find().fetch();
@@ -31,24 +30,20 @@ class Jarvis {
     };
 
     goBackToPreviousRound() {
-        console.log("entry goBackToPreviousRound");
         currentRound = _.last(rounds);
         rounds.pop();
         return currentRound.response;
     };
 
     setIsCharacterFound() {
-        console.log("entry setIsCharacterFound");
         isCharacterFound = true;
     };
 
     getIsCharacterFound() {
-        console.log("entry getIsCharacterFound ", isCharacterFound);
         return isCharacterFound;
     };
 
     characterIsFound() {
-        console.log("entry characterIsFound");
         this.saveGameInCollection(true);
         currentRound.response.type = 'victory';
         currentRound.response.nbrTimesPlayed = _.where(Games.find().fetch(), { chosenCharacterId: currentRound.response._id }).length;
@@ -56,14 +51,12 @@ class Jarvis {
     };
 
     surrend() {
-        console.log("entry surrend");
         currentRound.response.type = 'defeat';
         this.saveGameInCollection(false);
         return currentRound.response;
     }
 
     saveGameInCollection(characterIsFound) {
-        console.log("entry saveGameInCollection");
         let game = {};
         if (characterIsFound) {
             game.chosenCharacterName = currentRound.response.name;
@@ -82,12 +75,10 @@ class Jarvis {
     };
 
     getPreviousRound() {
-        console.log("entry getPreviousRound");
         return currentRound;
     };
 
     saveRound(givenAnswer) {
-        console.log("entry saveRound");
         currentRound.givenAnswer = Number(givenAnswer);
         currentRound.roundNumber = rounds.length + 1;
         let copiedRound = {};
@@ -96,13 +87,11 @@ class Jarvis {
     };
 
     removePreviousQuestionAsked() {
-        console.log("entry removePreviousQuestionAsked");
         let previousAttributeName = currentRound.response.attribute;
         attributesList = _.reject(attributesList, function (attribute) { return attribute.name == previousAttributeName; });
     };
 
     removePreviousCharacterSuggested() {
-        console.log("entry removePreviousCharacterSuggested");
         let previousCharacterId = currentRound.response._id;
         scoringArray = _.reject(scoringArray, function (element) { return element.characterId == previousCharacterId; });
         // Recalculate generalEntropy and update numberOfCharacters
@@ -111,7 +100,6 @@ class Jarvis {
     };
 
     updateScore(givenResponse) {
-        console.log("entry updateScore");
         let attributeOfPreviousQuestion = _.last(rounds).response.attribute;
 
         _.each(scoringArray, function (scoringElem) {
@@ -124,14 +112,11 @@ class Jarvis {
     };
 
     findHighestScored() {
-        console.log("entry findHighestScore");
         // TODO : Filtrer scoringArray en excluant ceux etant eliminé (excluded)
         return _.max(scoringArray, function (scoringElem) { return scoringElem.score; });
     };
 
     findQuestionOrCharacter() {
-        console.log("entry findQuestionOrCharacter");
-
         // Jarvis will surrend after 20 questions without find the character
         if (rounds.length > 20) {
             return this.surrend();
@@ -154,8 +139,6 @@ class Jarvis {
     }
 
     askQuestion() {
-        console.log("entry askQuestion");
-
         _.each(attributesList, function (attribute, index) {
             attribute.entropyResponses = jarvis.calculateEntropyPerAttribute(attribute);
             attribute.gain = jarvis.calculateGain(attribute);
@@ -165,13 +148,10 @@ class Jarvis {
         let attributeWithBestGain = _.max(attributesList, function (attribute) { return attribute.gain; });
         let nextQuestion = _.find(questions, function (question) { return question.attribute == attributeWithBestGain.name; });
 
-        console.log("attributeWithBestGain ", attributeWithBestGain);
-        console.log("nextQuestion ", nextQuestion);
         return nextQuestion;
     };
 
     suggestCharacter(highestScored) {
-        console.log("entry suggestCharacter");
         return _.find(characters, function (character) { return character._id == highestScored.characterId; });
     };
 
