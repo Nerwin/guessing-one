@@ -1,4 +1,10 @@
 @import url('http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,600');
+@import url('http://fonts.googleapis.com/css?family=Patua+One|Open+Sans');
+@import "compass/css3";
+@font-face {
+  font-family: 'Minya Nouvelle Regular';
+  src: url('http://ff.static.1001fonts.net/m/i/minya-nouvelle.regular.ttf');
+}
 /******************* 
     Général 
 ********************/
@@ -335,8 +341,7 @@ Loading component
 /******************* 
 Game component 
 ********************/
-@import "compass/css3";
-@import url(http://fonts.googleapis.com/css?family=Patua+One|Open+Sans);
+
 
 .game-history .col-header {
 	border-top:1px solid #858d99;
@@ -688,7 +693,7 @@ Character component
 	margin: 60px 0px;
 }
 .ui-character .ui-item{
-	max-width: 570px;
+	max-width: 705px;
 	margin: 20px auto;
 	background:#fff;
 	border-radius: 4px;
@@ -698,11 +703,15 @@ Character component
 	.ui-character .ui-item{
 		max-width: 300px;
 	}
+	
 }
 .ui-character .ui-item .ui-left{
-	width: 200px;
+	width: 250px;
 	float: left;
 	padding: 20px 30px;
+	font-size: 16px; 
+	/*font-size: 1vw;*/
+	/*font-family: 'Minya Nouvelle Regular';*/
 }
 @media(max-width: 480px){
 	.ui-character .ui-item .ui-left{
@@ -710,11 +719,15 @@ Character component
 		float: none;
 	}
 }
-.ui-character .ui-item  .ui-left img{
-	width: 70px;
-	border-radius: 100%;
+.ui-character .ui-item .ui-left img{
+	width: 160px;
 	margin: 0px auto;
 	margin-bottom:10px;
+}
+.ui-character .ui-item .ui-right img{
+	width: 100px;
+	border-radius: 40%;
+	margin: 15px auto;
 }
 .ui-character .ui-item .ui-left .ui-progress{
 	margin: 15px 0px;
@@ -748,8 +761,12 @@ Character component
 	margin: 2px;
 }
 .ui-character .ui-item .ui-right{
-	margin-left: 200px;
-	padding: 10% 30px;
+	margin-left: 250px;
+	padding: 0 25px;
+	padding-top: 5%;
+	padding-bottom: 4%;
+	width: auto;
+	height: auto;
 	border-top-right-radius: 4px;
 	border-bottom-right-radius: 4px;
 	box-shadow:inset 3px 0px 10px rgba(0,0,0,0.2);
@@ -764,8 +781,9 @@ Character component
 	color: #fff;
 }
 .ui-character .ui-item .ui-right h3{
-	font-size: 20px;
-	line-height: 30px;
+	font-size: 35px;
+	line-height: 5px;
+	margin-bottom: 25px;
 	color: #fff;
 	font-weight:400;
 }
@@ -773,7 +791,7 @@ Character component
 	font-size: 14px;
 	line-height: 28px;
 	color: #fff;
-	margin:5px 0px;
+	margin:15px 0px;
 }
 .ui-character .ui-item .ui-right h4{
 	font-size: 15px;
@@ -782,14 +800,24 @@ Character component
 	color: #fff;
 	margin: 10px 0px;
 }
+.ui-character .ui-item .ui-right h2{
+	line-height: 35px;
+	margin-bottom: 20px;
+	color: #fff;
+}
 .ui-character .ui-item .ui-right h4 > i{
 	margin-right: 12px;
 }
 .ui-character .ui-item .ui-right button {
-	background: #729fda;
+	margin-top: 30px;
+	margin-bottom: 20px;
 }
-.ui-character .ui-item .ui-right button:hover {
-	background: #3069b6;
+.ui-character .ui-item .ui-right input {
+	border-radius: 5px;
+	margin-bottom: 10px;
+}
+.ui-character .ui-item .ui-right label {
+	color: #fff;
 }
 
 /******************* 
@@ -1031,4 +1059,67 @@ NavBar component
 }
 .ui-navbar .navi li:hover i{
 	color:#32c8de;
+}
+
+
+
+/* Autosuggest Component */
+
+.react-autosuggest__container {
+  position: relative;
+}
+
+.react-autosuggest__input {
+  padding: 5px 5px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+}
+
+.react-autosuggest__input--focused {
+  outline: none;
+}
+
+.react-autosuggest__input--open {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.react-autosuggest__suggestions-container {
+  display: none;
+}
+
+.react-autosuggest__suggestions-container--open {
+  display: block;
+  position: absolute;
+  top: 45px;
+  width: 100%;
+  border: 1px solid #aaa;
+  background-color: #fff;
+  font-size: 16px;
+  text-align: center;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  z-index: 2;
+}
+
+.react-autosuggest__suggestions-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.react-autosuggest__suggestion {
+  cursor: pointer;
+  padding: 10px 10px;
+}
+
+.react-autosuggest__suggestion--highlighted {
+  background-color: #0C7EAF;
+  color: #fff;
+}
+
+.suggest-img {
+	width: auto;
+	max-width: 80px;
+	max-height: 110px;
 }

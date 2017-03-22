@@ -4,11 +4,11 @@ import { mount } from 'react-mounter';
 import React from 'react';
 
 import App from '/client/components/app';
-import Card from '/client/components/card';
-import Statistiques from '/client/components/statistiques';
 import Home from '/client/components/home';
-import GameHistory from '/client/components/gameHistory';
+import Card from '/client/components/card';
 import Connection from '/client/components/connection';
+import GameHistory from '/client/components/gameHistory';
+import Statistiques from '/client/components/statistiques';
 
 FlowRouter.route("/", {
     action() {

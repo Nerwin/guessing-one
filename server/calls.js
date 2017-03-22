@@ -12,6 +12,12 @@ Meteor.methods({
         return jarvis.goBackToPreviousRound();
     },
 
+    getCharactersName() {
+        let characters = [];
+        Characters.find().forEach(function(char) { characters.push({name: char.name, img: char.img}) });
+        return characters;
+    },
+
     treatResponse(response) {
         let responseId = Number(response.responseId);
         let previousRoundType = jarvis.getPreviousRound().response.type;

@@ -126,7 +126,8 @@ class Jarvis {
         let response = 'undefined';
 
         // TODO Ameliorer la detection d'un potentiel personnage
-        if (highestScored.score > 18) {
+        // For debug : change to > 18
+        if (highestScored.score < 18) {
             response = this.suggestCharacter(highestScored);
             response.type = 'suggestion';
         } else {

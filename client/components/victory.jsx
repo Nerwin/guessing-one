@@ -18,14 +18,14 @@ export default class Victory extends Component {
     }
 
     imgError(event) {
-        event.target.src = "/images/Inconnu.png";
+        event.target.src = "/images/characters/Inconnu.png";
     }
 
     render() {
         if (typeof this.props.data != 'undefined') {
             return (
-                <div style={{ width: "100%" }}>
-                    <img src={"/images/" + this.props.data.img} className="img-card" onError={this.imgError}></img>
+                <div className="card text-center" style={{ width: "100%" }}>
+                    <img src={"/images/characters/" + this.props.data.img} className="img-card" onError={this.imgError}></img>
                     <h2 className="name-card">{this.props.data.name}</h2>
                     <p>I won ! This character has been played {this.props.data.nbrTimesPlayed} times.</p>
                     <p>You wanna play again ?</p>

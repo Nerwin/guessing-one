@@ -10,7 +10,7 @@ export default class Character extends Component {
   }
 
   imgError(event) {
-    event.target.src = "/images/Inconnu.png";
+    event.target.src = "/images/characters/Inconnu.png";
   }
 
   handleResponseOfSuggestedCharacter(event, instance) {
@@ -23,13 +23,13 @@ export default class Character extends Component {
   render() {
     let characterName = "Inconnu";
     let characterText = "As a shadow you will never see me, but i can be everywhere, if you are not looking";
-    let characterImg = "/images/inconnu.png";
+    let characterImg = "/images/characters/Inconnu.png";
 
     if (typeof this.props.character != "undefined") {
       character = this.props.character;
       characterName = character.name;
       characterText = character.description;
-      characterImg = "/images/" + character.img;
+      characterImg = "/images/characters/" + character.img;
     }
 
     return (

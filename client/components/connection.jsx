@@ -121,7 +121,7 @@ class Connection extends Component {
 									<input type="text" className="form-control" placeholder="Enter Email"/>
 								</div>
 								<div className="form-group">
-									<label for="comments" className="control-label">Comments</label>
+									<label htmlFor="comments" className="control-label">Comments</label>
 									<textarea className="form-control" id="comments" rows="5" placeholder="Enter Comments"></textarea>
 								</div>
 								<div className="form-group">
