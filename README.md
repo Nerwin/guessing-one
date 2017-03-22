@@ -1,6 +1,8 @@
 <snippet>
   <content>
-# Akinator-Like (South-Park version)
+  
+# Guessing One  
+## Akinator-Like (South-Park version)
 __Made with Meteor + ReactJs__
 
 This project is a NodeJs version of my school project Akinator (initially made in C# ->
