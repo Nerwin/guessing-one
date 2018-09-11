@@ -24,7 +24,7 @@ The IA can learn new character from South-Park
 The knowledge base improves as the games are played
 
 ## Installation
-1.  git clone https://github.com/Nerwin/akinator-like.git
+1.  git clone https://github.com/Nerwin/guessing-one.git
 2.  cd akinator-like
 3.  meteor npm install
 4.  meteor run
